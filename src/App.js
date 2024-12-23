@@ -12,7 +12,7 @@ const App = () => {
   const [movies, setMovies] = useState(moviesData);
 
   // State to manage the filter
-  const [filter, setFilter] = useState({ title: "", rating: 0 });
+  const [filter, setFilter] = useState({ title: "", rating: "" });
   
   // Function to Add a new movie to the list
 
@@ -32,7 +32,7 @@ const App = () => {
     <div className="app-container">
       <div className="app-content">
       <h1 style={{color:"white", fontSize:"50px"}}>Go My Movie</h1>
-      <Filter setFilter={setFilter} />
+      <Filter filter={filter} setFilter={setFilter} />
       <MovieList movies={filteredMovies} />
       <AddMovie handleAddMovie={handleAddMovie} />
       </div>
