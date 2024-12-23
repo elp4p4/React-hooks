@@ -1,13 +1,16 @@
 import React from "react";
 import "../App.css";
 
-const Filter = ({ setFilter }) => {
+const Filter = ({ filter, setFilter }) => {
   const handleTitleChange = (e) => {
     setFilter((prev) => ({ ...prev, title: e.target.value }));
   };
 
   const handleRatingChange = (e) => {
-    setFilter((prev) => ({ ...prev, rating: e.target.value }));
+    const value = e.target.value;
+    if (value >= 0 || value === "") {
+      setFilter((prev) => ({ ...prev, rating: value }));
+    }
   };
 
   return (
@@ -15,12 +18,14 @@ const Filter = ({ setFilter }) => {
       <input
         type="text"
         placeholder="Search by title"
+        value={filter.title}
         onChange={handleTitleChange}
         className="filter-input"
       />
       <input
         type="number"
         placeholder="Minimum rating"
+        value={filter.rating}
         onChange={handleRatingChange}
         className="filter-input"
       />
